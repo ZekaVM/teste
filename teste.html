@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gases Ideais São Legais</title>
+</head>
+<body>
+    <h1>Gráfico P x Vm para Gases Ideais</h1>
+    <p>Gráfico interativo!!!</p>
+
+    <h2>Insira um valor para a temperatura <b>em Kelvin</b></h2>
+    <form action="/plot" method="get">
+        <label for="T">Temperatura:</label>
+        <input type="number" name="T" step="any" min="0" required>
+        <button type="submit">Gerar Gráfico</button>
+    </form>
+
+    <h2>Resultado:</h2>
+    <img id="graph" src="" alt="Gráfico gerado aparecerá aqui">
+
+    <script>
+        document.querySelector("form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent page refresh
+
+            let T = document.querySelector("input[name='T']").value;
+            document.getElementById("graph").src = "/plot?T=" + T;
+        });
+    </script>
+</body>
+</html>
+
